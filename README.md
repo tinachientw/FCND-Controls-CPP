@@ -1,4 +1,4 @@
-# Control of a 3D Quadrotor#
+# Control of a 3D Quadrotor
 
 
 
@@ -149,8 +149,6 @@ We won't be worrying about yaw just yet.
 The roll-pitch controller is a P controller responsible for commanding the roll and pitch rates ( 𝑝𝑐  and  𝑞𝑐 ) in the body frame. First, it sets the desired rate of change of the given matrix elements using a P controller.
 <img src="img/roll_pitch_controler.png"  />
 
-
-
 ```
 V3F QuadControl::RollPitchControl(V3F accelCmd, Quaternion<float> attitude, float collThrustCmd)
 {
@@ -229,6 +227,7 @@ Next, you will implement the position, altitude and yaw control for your quad.  
  The rotation matrix elements R13 (also referred to as b_x ) and R23 (also referred to as b_y ). Lateral acceleration commend comes from lateral controller. By using it, b_x_target & b_y_target are obtained.
 
 <img src="img/Lateral controller.png"  />
+
 ```
 V3F QuadControl::LateralPositionControl(V3F posCmd, V3F velCmd, V3F pos, V3F vel, V3F accelCmdFF)
 {
@@ -279,8 +278,10 @@ V3F QuadControl::LateralPositionControl(V3F posCmd, V3F velCmd, V3F pos, V3F vel
   return accelCmd;
 }
 ```
+
  - implement the code in the function `AltitudeControl()`
  <img src="img/Altitude Controller.png"  />
+ 
 
 ```
 float QuadControl::AltitudeControl(float posZCmd, float velZCmd, float posZ, float velZ, Quaternion<float> attitude, float accelZCmd, float dt)
